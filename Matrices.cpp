@@ -341,7 +341,7 @@ Matrix4& Matrix4::invertAffine()
     //m[3] = m[7] = m[11] = 0.0f;
     //m[15] = 1.0f;
 
-    return *this;
+    return * this;
 }
 
 
@@ -476,21 +476,7 @@ Matrix4& Matrix4::invertGeneral()
     return *this;
 }
 
-Matrix4& Matrix4::invertOrtho()
-{
-    float x = -m[12], y = -m[13], z = -m[14];
-    Vector3 t(x, y, z);
-    Vector3 X;
 
-    X.set(m[0], m[1], m[2]);
-    m[3] = X.dot(t);
-    X.set(m[4], m[5], m[6]);
-    m[7] = X.dot(t);
-    X.set(m[8], m[9], m[10]);
-    m[11] = X.dot(t);
-
-    return *this;
-}
 
 ///////////////////////////////////////////////////////////////////////////////
 // return determinant of 4x4 matrix

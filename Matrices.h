@@ -178,7 +178,6 @@ public:
     Matrix4&    invertAffine();                         // inverse of affine transform matrix
     Matrix4&    invertProjective();                     // inverse of projective matrix using partitioning
     Matrix4&    invertGeneral();                        // inverse of generic matrix
-    Matrix4&    invertOrtho();
 
     // transform matrix
     Matrix4&    translate(float x, float y, float z);   // translation by (x,y,z)
