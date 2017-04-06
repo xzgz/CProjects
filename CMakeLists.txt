@@ -17,20 +17,11 @@ vtk_module_config(VTK
 )
 include(${VTK_USE_FILE})
 
-set(RENDERING_EXAMPLES_SRCS
-#  GPURenderDemo
-#  FixedPointVolumeRayCastMapperCT
-)
+aux_source_directory(. SRC_LIST)
 
-#foreach(name ${RENDERING_EXAMPLES_SRCS})
-#  add_executable(${name} MACOSX_BUNDLE ${name}.cpp)
-#  target_link_libraries(${name} ${VTK_LIBRARIES})
-#endforeach()
+foreach(name ${SRC_LIST})
+  string(REGEX REPLACE "[.]cxx$" "" ELF ${name})
+  add_executable(${ELF} MACOSX_BUNDLE ${name})
+  target_link_libraries(${ELF} ${VTK_LIBRARIES})
+endforeach()
 
-#add_executable(TestVR MACOSX_BUNDLE TestVR.cpp)
-
-set(SRC_LIST FixedPointVolumeRayCastMapperCT.cxx
-             GPURenderDemo.cxx
-             )
-add_executable(FixedPointVolumeRayCastMapperCT ${SRC_LIST})
-target_link_libraries(FixedPointVolumeRayCastMapperCT ${VTK_LIBRARIES})

@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 
   int count = 1;
 //  char *dirname = NULL;
-  std::string dirname = "./1";
+  std::string dirname = "../../../../data/brain";
   double opacityWindow = 4096;
   double opacityLevel = 2048;
   int blendType = 2;
