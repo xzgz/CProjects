@@ -24,3 +24,4 @@ foreach(name ${SRC_LIST})
   add_executable(${ELF} MACOSX_BUNDLE ${name})
   target_link_libraries(${ELF} ${VTK_LIBRARIES})
 endforeach()
+
