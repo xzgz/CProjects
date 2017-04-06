@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 2.8.5 FATAL_ERROR)
+if(POLICY CMP0025)
+  cmake_policy(SET CMP0025 NEW) # CMake 3.0
+endif()
+if(POLICY CMP0053)
+  cmake_policy(SET CMP0053 NEW) # CMake 3.1
+endif()
+
+project (VolumeRendering)
+find_package(VTK REQUIRED)
+vtk_module_config(VTK
+  vtkCommonCore
+  vtkIOImage
+  vtkIOXML
+  vtkInteractionWidgets
+  vtkRenderingVolume${VTK_RENDERING_BACKEND}
+)
+include(${VTK_USE_FILE})
+
+set(RENDERING_EXAMPLES_SRCS
+#  GPURenderDemo
+#  FixedPointVolumeRayCastMapperCT
+)
+
+#foreach(name ${RENDERING_EXAMPLES_SRCS})
+#  add_executable(${name} MACOSX_BUNDLE ${name}.cpp)
+#  target_link_libraries(${name} ${VTK_LIBRARIES})
+#endforeach()
+
+#add_executable(TestVR MACOSX_BUNDLE TestVR.cpp)
+
+set(SRC_LIST FixedPointVolumeRayCastMapperCT.cxx
+             GPURenderDemo.cxx
+             )
+add_executable(FixedPointVolumeRayCastMapperCT ${SRC_LIST})
+target_link_libraries(FixedPointVolumeRayCastMapperCT ${VTK_LIBRARIES})
