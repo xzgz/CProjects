@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
 //    return EXIT_FAILURE;
 //  }
   std::string filename;
-  filename = "../../../../data/brain";//".. / Data / head.mhd";
+  filename = "../../../../data/Brain";//".. / Data / head.mhd";
 
   // Create the renderer, the render window, and the interactor. The renderer
   // draws into the render window, the interactor enables mouse- and
@@ -96,7 +96,7 @@ int main (int argc, char *argv[])
   vtkSmartPointer<vtkMarchingCubes> boneExtractor =
     vtkSmartPointer<vtkMarchingCubes>::New();
   boneExtractor->SetInputConnection(reader->GetOutputPort());
-  boneExtractor->SetValue(0, 100);
+  boneExtractor->SetValue(0, 200);
 
   vtkSmartPointer<vtkStripper> boneStripper =
     vtkSmartPointer<vtkStripper>::New();

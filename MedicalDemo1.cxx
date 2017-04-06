@@ -6,6 +6,7 @@
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
+#include <vtkDICOMImageReader.h>
 #include <vtkMetaImageReader.h>
 #include <vtkPolyDataMapper.h>
 #include <vtkActor.h>
@@ -23,7 +24,7 @@ int main (int argc, char *argv[])
 //    return EXIT_FAILURE;
 //  }
   std::string filename;
-  filename = "../../../../Data/ead.raw";//"head.mhd";
+  filename = "../../../../data/brain";//"head.mhd";
 
   // Create the renderer, the render window, and the interactor. The renderer
   // draws into the render window, the interactor enables mouse- and
@@ -39,9 +40,14 @@ int main (int argc, char *argv[])
     vtkSmartPointer<vtkRenderWindowInteractor>::New();
   iren->SetRenderWindow(renWin);
 
-  vtkSmartPointer<vtkMetaImageReader> reader =
-    vtkSmartPointer<vtkMetaImageReader>::New();
-  reader->SetFileName (filename.c_str());
+  //vtkSmartPointer<vtkMetaImageReader> reader =
+  //  vtkSmartPointer<vtkMetaImageReader>::New();
+  //reader->SetFileName (filename.c_str());
+
+  vtkSmartPointer<vtkDICOMImageReader> reader =
+	  vtkSmartPointer<vtkDICOMImageReader>::New();
+  reader->SetDirectoryName(filename.c_str());
+  reader->Update();
 
   // An isosurface, or contour value of 500 is known to correspond to the
   // skin of the patient.
